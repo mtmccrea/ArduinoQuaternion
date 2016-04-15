@@ -37,7 +37,7 @@ a.action = { |y,p,r|
 	[ y,p,r ].raddeg.postln
 };
 
-a.setHome
+a.setHome		// reset home if the position is drifting
 a.clearHome
 
 // post yaw pitch and roll from within parser for debugging
