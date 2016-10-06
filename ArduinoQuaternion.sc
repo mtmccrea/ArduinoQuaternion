@@ -33,7 +33,7 @@ ArduinoQuaternion : Arduino
 
 ArduinoQuaternionParser : ArduinoParser
 {
-	var asciiInputLine, <charState, <settingHome = false, homeQ = nil, <>postYPR=false;
+	var asciiInputLine, <charState, <settingHome = false, homeQ = nil, <>postYPR=false, <>postRaw=false;
 
 	init { }
 
@@ -79,6 +79,7 @@ ArduinoQuaternionParser : ArduinoParser
 
 		// split = asciiLine.asAscii.split($,);
 		split = asciiLine.collect({|x| {x.asInteger.asAscii}.try ? "" }).join.split($,);
+		postRaw.if{ split.postln };
 
 		if( split.size >= 5 ){
 			block{ |break|
@@ -154,6 +155,8 @@ a.clearHome
 // post yaw pitch and roll from within parser for debugging
 a.parser.postYPR = true
 a.parser.postYPR = false
+a.parser.postRaw = true
+a.parser.postRaw = false
 
 a.close
 
